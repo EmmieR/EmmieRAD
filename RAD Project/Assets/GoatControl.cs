@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class GoatControl : MonoBehaviour
 {
+    private Animator SK_goat_dark;
 
     public GameObject bulletCloneTemplate;
     // Start is called before the first frame update
     void Start()
     {
-        
+        SK_goat_dark = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -24,8 +25,10 @@ public class GoatControl : MonoBehaviour
         
         if (Input.GetKey(KeyCode.W))
         {
+            SK_goat_dark.SetBool("isWalkiing", true);
             transform.position += Vector3.forward * Time.deltaTime;
             
+
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -33,9 +36,14 @@ public class GoatControl : MonoBehaviour
             transform.position += Vector3.left * Time.deltaTime;
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.position += Vector3.right * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += Vector3.back * Time.deltaTime;
         }
 
         if (Input.GetKeyDown(KeyCode.Q))
