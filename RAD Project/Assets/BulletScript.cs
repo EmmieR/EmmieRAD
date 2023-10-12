@@ -17,4 +17,12 @@ public class BulletScript : MonoBehaviour
     {
         transform.position += bulletspeed * transform.forward * Time.deltaTime;
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("OWWw WHY?");
+        Health sheep = collision.transform.GetComponent<Health>();
+        if (sheep)
+            sheep.takeDamage(40);
+    }
 }
